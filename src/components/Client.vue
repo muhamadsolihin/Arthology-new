@@ -147,12 +147,15 @@
             </svg></i>
           </div>
         </div>
+        
       </div>
     </div>
+    <Footer/>
 </template>
 
 <script>
-export default {};
+import Footer from './Footer.vue';
+export default { components: { Footer } };
 </script>
 
 <style lang="scss" scoped>

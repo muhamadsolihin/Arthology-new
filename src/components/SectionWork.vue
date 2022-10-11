@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row pt-5" style="background-color: #000">
       <hr style="border: 2px white solid; size: 1em; width: 100%" />
-      <div class="col-md-6 justify-content-center">
+      <div class="col-md-6 reveal  justify-content-center">
         <div class="head">
           <p>
             InterconnectDATA <br />
@@ -17,7 +17,7 @@
         class="mt-5"
         style="border: 2px white solid; size: 1em; width: 100%"
       />
-      <div class="col-md-6 pt-5 justify-content-center">
+      <div class="col-md-6 reveal pt-5 justify-content-center">
         <div class="head">
           <p>
             InterconnectDATA <br />
@@ -25,14 +25,14 @@
           </p>
         </div>
       </div>
-      <div class="col-md-6 pt-5">
+      <div class="col-md-6 reveal pt-5">
         <img :src="image2" class="image-2" />
       </div>
       <hr
         class="mt-5"
         style="border: 2px white solid; size: 1em; width: 100%"
       />
-      <div class="col-md-6 pt-5 justify-content-center">
+      <div class="col-md-6 reveal pt-5 justify-content-center">
         <div class="head">
           <p>
             InterconnectDATA <br />
@@ -40,14 +40,14 @@
           </p>
         </div>
       </div>
-      <div class="col-md-6 pt-5">
+      <div class="col-md-6 reveal pt-5">
         <img :src="image3" class="image-3" />
       </div>
       <hr
         class="mt-5"
         style="border: 2px white solid; size: 1em; width: 100%"
       />
-      <div class="col-md-6 pt-5 justify-content-center">
+      <div class="col-md-6 reveal pt-5 justify-content-center">
         <div class="head">
           <p>
             InterconnectDATA <br />
@@ -55,14 +55,14 @@
           </p>
         </div>
       </div>
-      <div class="col-md-6 pt-5">
+      <div class="col-md-6 reveal pt-5">
         <img :src="image4" class="image-4" />
       </div>
       <hr
         class="mt-5"
         style="border: 2px white solid; size: 1em; width: 100%"
       />
-      <div class="col-md-6 pt-5 justify-content-center">
+      <div class="col-md-6 reveal pt-5 justify-content-center">
         <div class="head">
           <p>
             InterconnectDATA <br />
@@ -70,14 +70,14 @@
           </p>
         </div>
       </div>
-      <div class="col-md-6 pt-5">
+      <div class="col-md-6 reveal pt-5">
         <img :src="image5" class="image-5" />
       </div>
       <hr
         class="mt-5"
         style="border: 2px white solid; size: 1em; width: 100%"
       />
-      <div class="col-md-12 mt-5">
+      <div class="col-md-12 reveal mt-5">
         <p class="headline">
           Lorem ipsum dolor sit amet, <br />
           consectetur adipiscing elit. <br />
@@ -104,7 +104,22 @@ import Slider from "./Slider.vue";
 
 export default {
   components: { Slider },
-  data: function () {
+  data: function reveal () {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
+    }
+  }
+
+window.addEventListener("scroll", reveal);
     return {
       image: image,
       image2,
@@ -117,6 +132,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .image-1 {
   width: 30em;
 }

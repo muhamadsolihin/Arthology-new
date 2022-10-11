@@ -2,12 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2">
-        <p style="text-align: justify;
-        color:#fff; margin-top:10%;
-        font-size:5em; font-weight: 700; line-height: 101.5%;
-        ">
+        <p
+          style="
+            text-align: justify;
+            color: #fff;
+            margin-top: 10%;
+            font-size: 5em;
+            font-weight: 700;
+            line-height: 101.5%;
+          "
+        >
           What
-          <span style="font-style: italic; font-weight: 400;"> We Do. </span>
+          <span style="font-style: italic; font-weight: 400"> We Do. </span>
         </p>
       </div>
       <div class="col-md-10 container-fluid">
@@ -292,7 +298,7 @@
 import Client from "./Client.vue";
 
 export default {
-    components: { Client },
+  components: { Client },
   name: "welcome",
   mounted: function () {
     const scrollContainer = document.querySelector("main");
